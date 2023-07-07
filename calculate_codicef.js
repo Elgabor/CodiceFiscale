@@ -138,4 +138,12 @@ function calcoloData(dataDiNascita, sesso) {
   return result;
 }
 
+//function codiceComune
+
+
+
+//function 
+
+
+
 console.log(calcoloCognome("borgato"), calcoloNome("lorenzo"), calcoloData("12/06/2003", "M"))
