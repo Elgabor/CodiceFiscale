@@ -144,6 +144,27 @@ function calcoloData(dataDiNascita, sesso) {
 
 //function 
 
+document.getElementById('dati_utente').addEventListener('submit', function(event){
+  event.preventDefault();
+
+  var nome = document.getElementById('name').value;
+  var cognome = document.getElementById('surname').value;
+  var dataDiNascita = document.getElementById('data').value;
+  var sesso = document.getElementById('sesso').value;
+  var comune = document.getElementById('comune').value;
+  var provincia = document.getElementById('provincia').value;
+
+  var rCognome = calcoloCognome(cognome);
+  var rNome = calcoloNome(nome);
+  var rdataDinascita = calcoloData(dataDiNascita, sesso);
+
+  var risHTML = "Risultato: " + rCognome + rNome + rdataDinascita;
+  
+  document.getElementById('codice_finale').innerText = risHTML;
+
+  document.getElementById('myForm').reset();
+})
+
 
 
 console.log(calcoloCognome("borgato"), calcoloNome("lorenzo"), calcoloData("12/06/2003", "M"))

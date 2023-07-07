@@ -13,32 +13,54 @@
     <div class="container-fluid">
         <h1 class="text-center">CODICE FISCALE</h1>
     </div>
-    <div class="container-sm">
-        <form>
-            <div class="mb-3">
-                <label for="surname" class="form-label">Surname:</label>
-                <input type="text" class="form-text" id="surnameExample">
+    <div class="container">
+        <form id="dati_utente">
+            <div class="row">
+                <div class="col-sm-6 mb-3">
+                    <label for="surname" class="form-label">Surname:</label>
+                    <input type="text" class="form-control" id="surname">
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="name" class="form-label">Name:</label>
-                <input type="text" class="form-text" id="name">
+            <div class="row">
+                <div class="col-sm-6 mb-3">
+                    <label for="data" class="form-label">Data di nascita:</label>
+                    <input type="text" class="form-control" id="data">
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <label for="sesso" class="form-label">Sesso:</label>
+                    <select class="form-select form-select-sm" aria-label="Default select example" id="sesso">
+                        <option selected></option>
+                        <option value="1">S</option>
+                        <option value="2">M</option>
+                    </select>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="data" class="form-label">Data di nascita:</label>
-                <input type="text" class="form-text" id="data">
+            <div class="row">
+                <div class="col-sm-6 mb-3">
+                    <label for="comune" class="form-label">Comune:</label>
+                    <input type="text" class="form-control" id="comune">
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <label for="provincia" class="form-label">Provincia:</label>
+                    <input type="text" class="form-control" id="provincia">
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="sesso" class="form-label">Sesso:</label>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected></option>
-                    <option value="1">S</option>
-                    <option value="2">M</option>
-                </select>
-            </div>
-
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
+
+
+    <div id="codice_finale">
+
+    </div>
+
+
+
+    <script src="calculate_codicef.js"></script>
 </body>
 
 </html>
