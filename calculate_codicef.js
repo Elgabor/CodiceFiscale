@@ -1,3 +1,4 @@
+//import comuni from 'listacomuni.js';
 var consonanti = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"];
 var vocali = ["a", "e", "i", "u", "o"];
 
@@ -162,9 +163,5 @@ document.getElementById('dati_utente').addEventListener('submit', function(event
   
   document.getElementById('codice_finale').innerText = risHTML;
 
-  document.getElementById('myForm').reset();
-})
-
-
-
-console.log(calcoloCognome("borgato"), calcoloNome("lorenzo"), calcoloData("12/06/2003", "M"))
+  document.getElementById('dati_utente').reset();
+});
