@@ -1,11 +1,11 @@
-//import comuni from 'listacomuni.js';
 var consonanti = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"];
 var vocali = ["a", "e", "i", "u", "o"];
+var comuni = [["M201","ZUMAGLIA"], ["A271", "ANCONA"],["H501","ROMA"], ["F205", "MILANO"], ["D612", "FIRENZE"], ["A944", "BOLOGNA"], ["L736", "VENEZIA"], ["A662", "BARI"]];
 
-// Calcola nome
+// function calculate name
 function calcoloNome(nome) {
     var result = "";
-    nome = nome.toLowerCase().replace(/\s/g, ""); // Rimuovi spazi e converti in minuscolo
+    nome = nome.toLowerCase().replace(/\s/g, ""); // Remove spaces and convert to lowercase
     var consonantiCount = 0;
   
     for (var i = 0; i < nome.length && result.length < 3; i++) {
@@ -33,10 +33,10 @@ function calcoloNome(nome) {
   
     return result.toUpperCase();
   }
-// Calcola cognome
+//function calculate surname
 function calcoloCognome(cognome) {
     var result = "";
-    cognome = cognome.toLowerCase().replace(/\s/g, ""); // Rimuovi spazi e converti in minuscolo
+    cognome = cognome.toLowerCase().replace(/\s/g, ""); // Remove spaces and convert to lowercase
     var consonantiCount = 0;
   
     for (var i = 0; i < cognome.length && result.length < 3; i++) {
@@ -66,20 +66,20 @@ function calcoloCognome(cognome) {
   
     return result.toUpperCase();
   }
-// Calcola data
+// function calculate date
 function calcoloData(dataDiNascita, sesso) {
   let result = "";
 
-  // Verifica se la data di nascita è nel formato corretto gg/mm/aaaa
+  // Verify if the date of birth is in the correct format dd/mm/yyyy
   var dataPattern = /^\d{2}\/\d{2}\/\d{4}$/;
   if (!dataPattern.test(dataDiNascita)) {
     console.error("Inserire il formato corretto: gg/mm/aaaa");
     return result;
   }
 
-  result += dataDiNascita.substr(8, 2); // Prende gli ultimi due numeri dell'anno
+  result += dataDiNascita.substr(8, 2); // Take the last two digits of the year
 
-  var mese = dataDiNascita.substr(3, 2); // Prende i due numeri del mese
+  var mese = dataDiNascita.substr(3, 2); // Take the two digits of the month
   var result1 = "";
 
   switch (mese) {
@@ -134,16 +134,25 @@ function calcoloData(dataDiNascita, sesso) {
     return result;
   }
 
-  result += result1 + ("0" + giorno).slice(-2); // Aggiunge lo zero iniziale se necessario
+  result += result1 + ("0" + giorno).slice(-2); //Add the leading zero if necessary
 
   return result;
 }
 
-//function codiceComune
+//function municipalityCode
+function calcoloCodiceComune(nomeComune) {
+  for (let i = 0; i < comuni.length; i++) {
+    if (comuni[i][1].toUpperCase() === nomeComune.toUpperCase()) {
+      return comuni[i][0];
+    }
+  }
+  
+  //If the name of the municipality is not found, return undefined.
+  return undefined;
+}
 
 
-
-//function 
+//function check code
 
 document.getElementById('dati_utente').addEventListener('submit', function(event){
   event.preventDefault();
@@ -153,13 +162,13 @@ document.getElementById('dati_utente').addEventListener('submit', function(event
   var dataDiNascita = document.getElementById('data').value;
   var sesso = document.getElementById('sesso').value;
   var comune = document.getElementById('comune').value;
-  var provincia = document.getElementById('provincia').value;
 
   var rCognome = calcoloCognome(cognome);
   var rNome = calcoloNome(nome);
   var rdataDinascita = calcoloData(dataDiNascita, sesso);
+  var rCodice = calcoloCodiceComune(comune);
 
-  var risHTML = "Risultato: " + rCognome + rNome + rdataDinascita;
+  var risHTML = "Risultato: " + rCognome + rNome + rdataDinascita + rCodice;
   
   document.getElementById('codice_finale').innerText = risHTML;
 
