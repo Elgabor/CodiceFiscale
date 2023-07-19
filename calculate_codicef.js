@@ -2,11 +2,17 @@ var consonanti = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q
 var vocali = ["a", "e", "i", "u", "o"];
 var comuni = [["M201","ZUMAGLIA"], ["A271", "ANCONA"],["H501","ROMA"], ["F205", "MILANO"], ["D612", "FIRENZE"], ["A944", "BOLOGNA"], ["L736", "VENEZIA"], ["A662", "BARI"]];
 var charControl = [
-  [0, "1"], [1, "0"], [5, "2"], [7, "3"], [9, "4"], [13, "5"], [15, "6"], [17, "7"], [19, "8"], [21, "9"],
-  [1, "A"], [0, "B"], [5, "C"], [7, "D"], [9, "E"], [13, "F"], [15, "G"], [17, "H"], [19, "I"], [21, "J"],
-  [2, "K"], [4, "L"], [18, "M"], [20, "N"], [11, "O"], [3, "P"], [6, "Q"], [8, "R"], [12, "S"], [14, "T"],
-  [16, "U"], [10, "V"], [22, "W"], [25, "X"], [24, "Y"], [23, "Z"]
+  ["0", 1], ["1", 0], ["2", 5], ["3", 7], ["4", 9], ["5", 13], ["6", 15], ["7", 17], ["8", 19], ["9", 21],
+  ["A", 1], ["B", 0], ["C", 5], ["D", 7], ["E", 9], ["F", 13], ["G", 15], ["H", 17], ["I", 19], ["J", 21],
+  ["K", 2], ["L", 4], ["M", 18], ["N", 20], ["O", 11], ["P", 3], ["Q", 6], ["R", 8], ["S", 12], ["T", 14],
+  ["U", 16], ["V", 10], ["W", 22], ["X", 25], ["Y", 24], ["Z", 23]
 ];
+var riscontrol = [
+  [0, "A"], [1, "B"], [2, "C"], [3, "D"], [4, "E"], [5, "F"], [6, "G"], [7, "H"], [8, "I"], [9, "J"],
+  [10, "K"], [11, "L"], [12, "M"], [13, "N"], [14, "O"], [15, "P"], [16, "Q"], [17, "R"], [18, "S"], [19, "T"],
+  [20, "U"], [21, "V"], [22, "W"], [23, "X"], [24, "Y"], [25, "Z"]
+];
+
 // function calculate name
 function calcoloNome(nome) {
     var result = "";
@@ -158,29 +164,35 @@ function calcoloCodiceComune(nomeComune) {
 
 
 //function check code
-function calculateControlCode(code) {
+function calculateControlCode(halfcode) {
+  var half_code = halfcode.toString();
+  console.log(half_code);
+  half_code = Array.from(halfcode);
+  console.log(half_code);
   var sum = 0;
-
-  for (var i = 0; i < code.length; i++) {
-    var character = code.charAt(i).toUpperCase();
-
-    if (i % 2 === 0) { // Caratteri dispari
-      if (character in charControl) {
-        sum += charControl[character][0];
-      }
-    } else { // Caratteri pari
-      if (character in charControl) {
-        sum += charControl[character][1];
+  for (let i = 0; i < half_code.length; i++) {
+    for (let j = 0; j < charControl.length; j++) {
+      if (half_code[i] === charControl[j][0]) {
+        sum += charControl[j][1];
+        break; 
       }
     }
   }
 
-  var remainder = sum % 26;
-  var controlCharacter = controlCodes[remainder];
+  let tot = sum/26
+  var ris = Math.floor(tot);
+  var letter = "";
 
-  return controlCharacter;
+  for(let y = 0; y < riscontrol.length; y++){
+      if(ris === riscontrol[y][0]){
+          letter = riscontrol[y][1];
+          break;
+      }
+  }
+  return letter;
 }
-console.log(calculateControlCode("BRGLNZ03H12L736"));
+
+
 
 document.getElementById('dati_utente').addEventListener('submit', function(event){
   event.preventDefault();
@@ -195,9 +207,9 @@ document.getElementById('dati_utente').addEventListener('submit', function(event
   var rNome = calcoloNome(nome);
   var rdataDinascita = calcoloData(dataDiNascita, sesso);
   var rCodice = calcoloCodiceComune(comune);
- 
-
-  var risHTML = "Risultato: " + rCognome + rNome + rdataDinascita + rCodice;
+  var ris = rCognome + rNome + rdataDinascita + rCodice;
+  var check_letter = calculateControlCode(ris);
+  var risHTML = "Risultato: " + rCognome + rNome + rdataDinascita + rCodice + check_letter;
   
   document.getElementById('codice_finale').innerText = risHTML;
 
