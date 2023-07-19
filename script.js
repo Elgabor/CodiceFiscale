@@ -2,11 +2,11 @@ var consonanti = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q
 var vocali = ["a", "e", "i", "u", "o"];
 var comuni = [["M201","ZUMAGLIA"], ["A271", "ANCONA"],["H501","ROMA"], ["F205", "MILANO"], ["D612", "FIRENZE"], ["A944", "BOLOGNA"], ["L736", "VENEZIA"], ["A662", "BARI"]];
 var charControl = [
-  ["0", 1], ["1", 0], ["2", 5], ["3", 7], ["4", 9], ["5", 13], ["6", 15], ["7", 17], ["8", 19], ["9", 21],
-  ["A", 1], ["B", 0], ["C", 5], ["D", 7], ["E", 9], ["F", 13], ["G", 15], ["H", 17], ["I", 19], ["J", 21],
-  ["K", 2], ["L", 4], ["M", 18], ["N", 20], ["O", 11], ["P", 3], ["Q", 6], ["R", 8], ["S", 12], ["T", 14],
-  ["U", 16], ["V", 10], ["W", 22], ["X", 25], ["Y", 24], ["Z", 23]
-];
+    ["0", 1], ["1", 0], ["2", 5], ["3", 7], ["4", 9], ["5", 13], ["6", 15], ["7", 17], ["8", 19], ["9", 21],
+    ["A", 1], ["B", 0], ["C", 5], ["D", 7], ["E", 9], ["F", 13], ["G", 15], ["H", 17], ["I", 19], ["J", 21],
+    ["K", 2], ["L", 4], ["M", 18], ["N", 20], ["O", 11], ["P", 3], ["Q", 6], ["R", 8], ["S", 12], ["T", 14],
+    ["U", 16], ["V", 10], ["W", 22], ["X", 25], ["Y", 24], ["Z", 23]
+  ];
 var riscontrol = [
   [0, "A"], [1, "B"], [2, "C"], [3, "D"], [4, "E"], [5, "F"], [6, "G"], [7, "H"], [8, "I"], [9, "J"],
   [10, "K"], [11, "L"], [12, "M"], [13, "N"], [14, "O"], [15, "P"], [16, "Q"], [17, "R"], [18, "S"], [19, "T"],
@@ -209,7 +209,7 @@ document.getElementById('dati_utente').addEventListener('submit', function(event
   var rCodice = calcoloCodiceComune(comune);
   var ris = rCognome + rNome + rdataDinascita + rCodice;
   var check_letter = calculateControlCode(ris);
-  var risHTML = "Risultato: " + rCognome + rNome + rdataDinascita + rCodice + check_letter;
+  var risHTML = rCognome + rNome + rdataDinascita + rCodice + check_letter;
   
   document.getElementById('codice_finale').innerText = risHTML;
 

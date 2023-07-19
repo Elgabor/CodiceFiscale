@@ -1,0 +1,59 @@
+body{
+    background-color: rgba(229, 234, 245, 1);
+}
+
+#header {
+    background-color:rgba(208, 189, 244, 0.2);
+    width: 90%;
+}
+
+#title_text {
+    color: rgba(64, 64, 64, 0.963);
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 1%;
+    letter-spacing: -1px;
+    line-height: 1;
+    text-align: center;
+}
+
+#codice_finale {
+    border: 2px solid black;
+    border-radius: 3px;
+    background-color: rgba(208, 189, 244, 0.2);
+    position: relative;
+}
+
+#codice_finale:hover{
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.custom-width {
+    width: 50%;
+}
+
+.custom-heigth {
+    height: 200px;
+}
+
+#button_s{
+    background-color:rgba(208, 189, 244, 0.2);
+    border: 2px solid #000000;
+    color: rgba(64, 64, 64, 0.963);
+    font-weight: bold;
+}
+
+#button_s:hover{
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#copybutton{
+    background-color:rgba(208, 189, 244, 0.2);
+    border: 2px solid #000000;
+    color: rgba(64, 64, 64, 0.963);
+    font-weight: bold;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
